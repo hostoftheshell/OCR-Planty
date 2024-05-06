@@ -205,7 +205,7 @@ trait MailChimpSubscriber
                 $arguments['interests'] = ArrayHelper::get($existingMember, 'interests', []);
             }
 
-            if ($arguments['tags']) {
+            if (ArrayHelper::exists($arguments, 'tags')) {
                 $isExistingTags = apply_filters_deprecated(
                     'fluentform_mailchimp_keep_existing_tags',
                     [
@@ -260,7 +260,7 @@ trait MailChimpSubscriber
             }
 
             // Let's sync the tags
-            if (! $isNew && $arguments['tags']) {
+            if (! $isNew && ArrayHelper::exists($arguments, 'tags')) {
                 $currentTags = [];
                 foreach ($result['tags'] as $tag) {
                     $currentTags[] = $tag['name'];
