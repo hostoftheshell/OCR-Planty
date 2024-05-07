@@ -37,4 +37,38 @@ function css_separator_func($atts) {
     // Return the separator HTML
     return $separator_html;
 }
+
+
+
+
+add_filter( 'wp_nav_menu_header-menu_items', 'prefix_add_menu_item', 10, 2 );
+
+// Define the function to modify menu items
+function prefix_add_menu_item( $items, $args ) {
+    // Check if the user is logged in
+    if ( is_user_logged_in() ) {
+        // Initialize an array to store menu items
+        $menu_items = [];
+
+        // Explode menu items into an array
+        $menu_items_array = explode( '</li>', $items );
+
+        // Loop through menu items
+        foreach ( $menu_items_array as $index => $menu_item ) {
+            // Add current menu item to the new array
+            $menu_items[] = $menu_item;
+
+            // Insert custom menu item after the first menu item
+            if ( $index === 0 ) {
+                $menu_items[] = '<li class="menu-item"><a class="menu-admin" href="' . esc_url( get_site_url() ) . '/wp-admin/">Admin</a></li>';
+            }
+        }
+
+        // Implode menu items array back into a string
+        $items = implode( '', $menu_items );
+    }
+
+    // Return the modified menu items
+    return $items;
+}
 ?>
