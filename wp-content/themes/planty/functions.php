@@ -6,13 +6,12 @@ function theme_enqueue_styles() {
 array(), filemtime(get_stylesheet_directory() . '/assets/css/theme.css'));
 }
 
-
-// Register the shortcode
+// Enregistre le shortcode
 add_shortcode('css_separator', 'css_separator_func');
 
-// Define the shortcode function
+// Défini la fonction shortcode
 function css_separator_func($atts) {
-    // Extract shortcode attributes with default values
+    // Extrait les attributs du shortcode avec les valeurs par défaut
     $atts = shortcode_atts(array(
         'height' => '20px',
         'color' => '#ECE2DA',
@@ -21,7 +20,7 @@ function css_separator_func($atts) {
         'margin_bottom' => '20px'
     ), $atts, 'css_separator');
 
-    // Construct the inline CSS style using the shortcode attributes
+    // Construiction du style CSS à l'aide des attributs du shortcode
     $style = sprintf(
         'style="width: 100%%; height: %s; background-color: %s; border-bottom-left-radius: %s; border-bottom-right-radius: %s; margin-bottom: %s;"',
         esc_attr($atts['height']),
@@ -31,44 +30,41 @@ function css_separator_func($atts) {
         esc_attr($atts['margin_bottom'])
     );
 
-    // Generate the separator HTML
+    // Génère le séparateur HTML
     $separator_html = sprintf('<div %s></div>', $style);
 
-    // Return the separator HTML
+    // Renvoie le séparateur HTML
     return $separator_html;
 }
 
-
-
-
 add_filter( 'wp_nav_menu_header-menu_items', 'prefix_add_menu_item', 10, 2 );
 
-// Define the function to modify menu items
+// Défini la fonction pour modifier les éléments de menu
 function prefix_add_menu_item( $items, $args ) {
-    // Check if the user is logged in
+    // Vérifie si l'utilisateur est connecté
     if ( is_user_logged_in() ) {
-        // Initialize an array to store menu items
+        // Initialise un tableau pour stocker les éléments du menu
         $menu_items = [];
 
-        // Explode menu items into an array
+        // Décompose les éléments du menu dans un tableau
         $menu_items_array = explode( '</li>', $items );
 
-        // Loop through menu items
+        // Parcoure les éléments du menu
         foreach ( $menu_items_array as $index => $menu_item ) {
-            // Add current menu item to the new array
+            // Ajoute les éléments du menu actuel au nouveau tableau
             $menu_items[] = $menu_item;
 
-            // Insert custom menu item after the first menu item
+            // Insère un élément de menu personnalisé après le premier élément de menu
             if ( $index === 0 ) {
                 $menu_items[] = '<li class="menu-item"><a class="menu-admin" href="' . esc_url( get_site_url() ) . '/wp-admin/">Admin</a></li>';
             }
         }
 
-        // Implode menu items array back into a string
+        // Recompose les éléments du menu dans une chaîne de caractère
         $items = implode( '', $menu_items );
     }
 
-    // Return the modified menu items
+    // Renvoie les éléments de menu modifiés
     return $items;
 }
 ?>

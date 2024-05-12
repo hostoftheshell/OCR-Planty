@@ -1,6 +1,6 @@
 /* GLOBAL */
 @font-face {
-    font-family: "Syne", sans-serif;
+    font-family: "Syne";
     src: url('../fonts/Syne/Syne-VariableFont_wght.ttf') format('truetype');
 }
 /* HEADER */
@@ -8,7 +8,7 @@
     padding-right: 0;
     padding-left: 0;
 }
-/*    Media query : max-width: 922px    */
+/* Media query : max-width: 922px */
 @media(min-width: 922px) {
     .ast-container {
         max-width: 1959px;
@@ -22,18 +22,10 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-
     margin-right: 40px;
 }
 .menu-item-203 a:hover {
-    color: #000;
-    font-family: Syne;
-    font-size: 16px;
-    font-style: normal;
     font-weight: 600;
-    line-height: normal;
-
-
 }
 .main-header-menu > li:last-child {
     background-color: #dc9f96;
@@ -41,33 +33,37 @@
     width: 236px !important;
     height: 80px !important;
 }
-.main-navigation > ul > li:last-child a {
-    margin: 0 auto !important;
+@media(max-width: 922px) {
+    .main-header-menu > li:last-child {
+        width: 100% !important;
+        height: 100% !important;
+    }
 
-
+    .menu-admin {
+        padding-left: 20px;
+        color: #dc9f96 !important;
+    }
 }
 
+.main-navigation > ul > li:last-child a {
+    margin: 0 auto !important;
+}
 
 .main-header-menu > li:last-child a {
     color: #FFF !important;
-
     font-family: Syne;
     font-size: 16px;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
-
 }
 
 .main-header-menu > li:last-child:hover {
     background-color: #c02e44 !important;
-
-
 }
 
 .menu-admin {
     color: #000;
-
     padding-right: 16px;
     margin-right: 40px;
 }
@@ -75,7 +71,6 @@
     color: #000;
     font-weight: 600;
 }
-
 
 /* FRONT PAGE HERO*/
 .left-leaf,
@@ -94,8 +89,6 @@
     left: 173px;
     top: 29px;
 }
-
-
 .uagb-image-heading {
     text-align: center;
 }
@@ -104,19 +97,17 @@
 .ast-footer-row-mobile-stack {
     border-width: 0 !important;
 }
-
 .site-below-footer-wrap {
     padding-top: 0;
     padding-bottom: 0;
 }
 
-
 /* CONTACT */
 .contact-leaf_1 {
-    bottom: 113px;
+    bottom: 140px;
     position: absolute;
     z-index: 0;
-    left: 111px;
+    left: 300px;
 }
 .contact-leaf_2 {
     position: absolute !important;
@@ -133,7 +124,6 @@
     position: relative;
 }
 
-
 .uagb-block-3d184b78 {
     padding-bottom: 0 !important;
 }
@@ -142,7 +132,9 @@
     border: none !important;
     margin-top: 8px;
 }
-
+.uagb-block-b97d77f9 > .uagb-container-inner-blocks-wrap {
+    width: 66% !important;
+}
 
 input.wpcf7-form-control.wpcf7-submit {
     display: block;
@@ -157,10 +149,8 @@ input.wpcf7-form-control.wpcf7-submit:hover {
     background-color: #c02e44 !important;
 }
 
-
 .wpcf7-form-control-wrap {
     z-index: 1;
-
 }
 .wpcf7-textarea {
     border: none !important;
@@ -172,13 +162,11 @@ input.wpcf7-form-control.wpcf7-submit:hover {
 
 }
 
-
 @media(max-width: 999px) {
     .uagb-block-a7b12223 {
         flex-direction: column !important;
     }
 }
-
 
 @media(max-width: 767px) {
     .contact-leaf_2 {
@@ -188,15 +176,23 @@ input.wpcf7-form-control.wpcf7-submit:hover {
     }
 }
 
-
 /* ORDER */
-
+.wpcf7-form-control-wrap {
+    display: flex !important;
+    justify-content: center !important;
+}
+.compteur {
+    width: 40% !important;
+}
+@media(max-width: 767px) {
+    .compteur {
+        width: 66px !important;
+    }
+}
 #order-form_wrapper {
-
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
 }
 
 #order-form_wrapper .order-form_column p {
@@ -210,7 +206,6 @@ input.wpcf7-form-control.wpcf7-submit:hover {
     justify-content: space-evenly;
 }
 
-
 #order-form_wrapper .order-form_column p label {
     color: #FFF;
 }
@@ -220,4 +215,22 @@ input.wpcf7-form-control.wpcf7-submit:hover {
 }
 #order-form_submit {
     margin-top: 48px;
+}
+
+@media(max-width: 900px) {
+    #order-form_wrapper {
+        flex-direction: column;
+    }
+    #order-form_wrapper .order-form_column {
+        align-self: center;
+    }
+    #order-form_wrapper .order-form_column:first-child {
+        border-right: none;
+    }
+    #order-form_wrapper .order-form_column:last-child {
+        margin-top: 20px !important;
+    }
+    #order-form_wrapper .order-form_column p {
+        width: 250px;
+    }
 }
