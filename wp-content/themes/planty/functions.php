@@ -11,7 +11,7 @@ add_shortcode('css_separator', 'css_separator_func');
 
 // Défini la fonction shortcode
 function css_separator_func($atts) {
-    // Extrait les attributs du shortcode avec les valeurs par défaut
+    // Extrait les attributs du shortcode avec des valeurs par défaut
     $atts = shortcode_atts(array(
         'height' => '20px',
         'color' => '#ECE2DA',
@@ -20,7 +20,7 @@ function css_separator_func($atts) {
         'margin_bottom' => '20px'
     ), $atts, 'css_separator');
 
-    // Construiction du style CSS à l'aide des attributs du shortcode
+    // Construction du style CSS à l'aide des attributs du shortcode
     $style = sprintf(
         'style="width: 100%%; height: %s; background-color: %s; border-bottom-left-radius: %s; border-bottom-right-radius: %s; margin-bottom: %s;"',
         esc_attr($atts['height']),
